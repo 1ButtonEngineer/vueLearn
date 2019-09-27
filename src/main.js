@@ -1,9 +1,14 @@
+
 import Vue from 'vue'
-
+//1.1导入路由的包
 import VueRouter from 'vue-router'
-
+//1.2安装路由的包
 Vue.use(VueRouter)
 
+//2.1 导入 vue-resource
+import VueResource from 'vue-resource'
+//2.2 安装 vue-resource
+Vue.use(VueResource)
 //导入MUI 的样式
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
