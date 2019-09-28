@@ -24,10 +24,11 @@ Vue.http.options.root = 'http://www.liulongbin.top:3005';
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
-import { Header, Swipe, SwipeItem } from 'mint-ui'
+import { Header, Swipe, SwipeItem, Button } from 'mint-ui'
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 //1.3导入自己的router.js路有模块
 import router from './router.js'
