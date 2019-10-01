@@ -18,17 +18,29 @@ import VueResource from 'vue-resource'
 //2.2 安装 vue-resource
 Vue.use(VueResource)
 
+
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview)
 //设置请求根路径
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
+//全局设置post表单数据格式的组织形式
+Vue.http.options.emulateJSON = 'true'
 //导入MUI 的样式
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
-import { Header, Swipe, SwipeItem, Button } from 'mint-ui'
-Vue.component(Header.name, Header)
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+//按需导入Mint-UI中的组件
+// import { Header, Swipe, SwipeItem, Button, Lazyload} from 'mint-ui'
+// Vue.component(Header.name, Header)
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+// Vue.use(Lazyload);
+
+import MintUI from 'mint-ui'
+Vue.use(MintUI)
+import 'mint-ui/lib/style.css'
+
 
 //1.3导入自己的router.js路有模块
 import router from './router.js'

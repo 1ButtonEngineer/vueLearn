@@ -2,8 +2,8 @@
     <div class="cmt-container">
         <h3>发表评论</h3>
         <hr>
-        <textarea class="cmt-textarea" placeholder="请输入要吐槽的内容" maxlength="120"></textarea>
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <textarea class="cmt-textarea" placeholder="请输入要吐槽的内容" maxlength="120" v-model="msg"></textarea>
+        <mt-button type="primary" size="large" @click = "postComments">发表评论</mt-button>
         <div class="cmt-list">
             <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
                 <div class="cmt-title">
@@ -24,7 +24,8 @@
         data() {
             return {
                 pageIndex: 1,//默认展示第一页数据
-                comments: []
+                comments: [],
+                msg: ''
             }
         },
         created() {
@@ -42,6 +43,29 @@
                         Toast('获取评论失败！')
                     }
                 });
+            },
+            postComments() {
+                //发表评论
+                //参数一: 请求url地址
+                //餐数二: 提交给服务器的数据（content: this.msg）
+                //参数三： 定义提交表单中数据的格式（emulateJSON:true）
+                this.$http.post('api/postcomment/' + this.$route.params.id, {
+                    content: this.msg.trim()
+                }).then(function(result) {
+                    if(result.body.status === 0) {
+                        //拼接一个评论对象
+                        var cmt = {
+                            user_name: '匿名用户', 
+                            add_time:Date.now(), 
+                            content: this.msg.trim()
+                        };
+                        this.comments.push(cmt);
+                        this.msg = '';
+                    }
+                    else {
+                        Toast("获取评论请求失败！");
+                    }
+                })
             },
             getMore() {
                 //加载更多
