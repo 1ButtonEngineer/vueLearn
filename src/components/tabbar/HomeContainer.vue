@@ -2,19 +2,19 @@
     <div>
 
         <!-- 轮播图区域 -->
-
-        <mt-swipe :auto="4000">
+        <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
+        <!-- <mt-swipe :auto="4000"> -->
             <!-- 在组件中使用v-bind，必须使用key -->
-            <mt-swipe-item>1</mt-swipe-item>
+            <!-- <mt-swipe-item>1</mt-swipe-item>
             <mt-swipe-item>2</mt-swipe-item>
-            <mt-swipe-item>3</mt-swipe-item>
+            <mt-swipe-item>3</mt-swipe-item> -->
 
             <!-- 因为缺少轮播图的api，这里不能使用 -->
             <!-- <mt-swipe-item v-for="item in lunbotuList" :key="item.url">
                 <img src="item.img" alt="">
             </mt-swipe-item> -->
 
-        </mt-swipe>
+        <!-- </mt-swipe> --> 
 
 
         <!-- 图标 -->
@@ -48,6 +48,7 @@
 <script>
 
 import {Toast} from 'mint-ui'
+import swiper from '../subcmps/swiper.vue'
 
     export default {
         data() {
@@ -56,42 +57,30 @@ import {Toast} from 'mint-ui'
             }
         },
         created() {
-            // this.getLunbotu();
+            this.getLunbotu();
         },
         methods: {
             getLunbotu() {
-                // this.$http.get("api/getlunbo").then(result => {
+                this.$http.get("api/getlunbo").then(result => {
                 
-                //     if(result.body.status === 0) {
-                //         this.lunbotuList = result.body.message;
+                    if(result.body.status === 0) {
+                        this.lunbotuList = result.body.message;
 
-                //     }else {
-                //         //获取图片失败
-                //         Toast('加载轮播图失败');
-                //     }
-                // })
+                    }else {
+                        //获取图片失败
+                        Toast('加载轮播图失败');
+                    }
+                })
             }
+        },
+        components: {
+            swiper
         }
     }
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe {
-    height: 200px;
 
-    .mint-swipe-item {
-        &:nth-child(1) {
-            background-color: red;
-        }
-        &:nth-child(2) {
-            background-color: orange;
-        }
-        &:nth-child(3) {
-            background-color: yellow;
-        }
-    }
-    
-}
 
 .mui-grid-view.mui-grid-9 {
     background-color: #fff;

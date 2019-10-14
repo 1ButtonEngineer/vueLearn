@@ -14,7 +14,8 @@ module.exports = {
   plugins: [ // 所有webpack  插件的配置节点
     new htmlWebpackPlugin({
       template: path.join(__dirname, './src/index.html'), // 指定模板文件路径
-      filename: 'index.html' // 设置生成的内存页面的名称
+      filename: 'index.html', // 设置生成的内存页面的名称
+      
     })
   ],
   module: { // 配置所有第三方loader 模块的
@@ -31,7 +32,7 @@ module.exports = {
   },
   resolve: {
     alias: { // 修改 Vue 被导入时候的包的路径
-      // "vue$": "vue/dist/vue.js"
+       "vue$": "vue/dist/vue.js"
     }
   }
 }
