@@ -168,7 +168,7 @@ import router from './router.js'
 import app from './App.vue'
 //按需导入Mint-UI中的组件
 
-var vm = new Vue({
+new Vue({
   el:'#app',
   render: c => c(app),
   router, //1.4挂在路由对象到vm实例上

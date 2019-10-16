@@ -2,7 +2,7 @@
   <div class="appContainer">
     
     <!--顶部header区域 -->
-    <mt-header fixed title="力拔山兮气盖世">
+    <mt-header fixed  title="力拔山兮气盖世">
       <span slot="left" @click="goback" v-show="flag">
         <mt-button icon="back">返回</mt-button>
       </span>
@@ -35,11 +35,6 @@
         <span class="mui-tab-label">搜索</span>
       </router-link>
     </nav>
-    
-    
-    
-
-
   </div>
 </template>
 
